@@ -1,0 +1,4 @@
+FROM 369324751427.dkr.ecr.us-west-2.amazonaws.com/emr-6.9-preview:rapids
+USER root
+COPY spark-rapids-benchmarks /usr/local/spark-rapids-benchmarks
+USER hadoop:hadoop
