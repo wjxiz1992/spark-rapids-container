@@ -56,11 +56,12 @@ ENV PYTHONPATH /opt/spark/python/lib/pyspark.zip:/opt/spark/python/lib/py4j-0.10
 # Install rapids plugin jar
 WORKDIR /opt/spark/jars
 RUN set -ex && \
-    wget -O rapids-4-spark-KEYS https://keys.openpgp.org/vks/v1/by-fingerprint/7A8A39909B9B202410C2A26F1D9E1285654392EF && \
-    gpg --import rapids-4-spark-KEYS && \
-    wget https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/$RAPIDS_VER/rapids-4-spark_2.12-$RAPIDS_VER-cuda11.jar.asc && \
-    wget https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/$RAPIDS_VER/rapids-4-spark_2.12-$RAPIDS_VER-cuda11.jar && \
-    gpg --verify rapids-4-spark_2.12-$RAPIDS_VER-cuda11.jar.asc rapids-4-spark_2.12-$RAPIDS_VER-cuda11.jar
+    wget https://urm.nvidia.com/artifactory/sw-spark-maven/com/nvidia/rapids-4-spark_2.12/23.02.0-SNAPSHOT/rapids-4-spark_2.12-23.02.0-SNAPSHOT-cuda11.jar
+    # wget -O rapids-4-spark-KEYS https://keys.openpgp.org/vks/v1/by-fingerprint/7A8A39909B9B202410C2A26F1D9E1285654392EF && \
+    # gpg --import rapids-4-spark-KEYS && \
+    # wget https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/$RAPIDS_VER/rapids-4-spark_2.12-$RAPIDS_VER-cuda11.jar.asc && \
+    # wget https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/$RAPIDS_VER/rapids-4-spark_2.12-$RAPIDS_VER-cuda11.jar && \
+    # gpg --verify rapids-4-spark_2.12-$RAPIDS_VER-cuda11.jar.asc rapids-4-spark_2.12-$RAPIDS_VER-cuda11.jar
 
 # Add necessary jars to support AWS s3 storage access
 RUN set -ex && \
